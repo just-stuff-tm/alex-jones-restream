@@ -3,41 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Live Stream</title>
+    <title>Live Stream</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
+        body { 
+            margin: 0; 
+            padding: 0; 
+            overflow: hidden;
+        }
+
+        /* Container div styling */
+        .container {
+            width: 100vw;
+            height: 100vh;
+            background-color: lightgray;
+            margin: 0 auto;
+            position: relative; /* Enables positioning for inner elements */
             box-sizing: border-box;
+            overflow: hidden; /* Hides overflow for scrolling effect */
         }
-        .video-container {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
-            height: 0;
-        }
-        .video-container iframe {
+
+        /* Styling for the background border image */
+        .border-image {
             position: absolute;
             top: 0;
-            left: 0;
+            left: -10px; /* Adjust to fit around the iframe */
+            width: calc(100% + 20px); /* Makes border image slightly larger than iframe */
+            height: 200%; /* Makes the image taller for smooth scrolling */
+            z-index: 1; /* Place behind the iframe */
+            opacity: 0.9; /* Adjusts transparency of border image */
+            pointer-events: none; /* Ensure clicks go through to iframe */
+            animation: scroll-up 10s linear infinite; /* Animation for vertical scroll */
+        }
+
+        /* Keyframes for scrolling up */
+        @keyframes scroll-up {
+            0% {
+                top: 0;
+            }
+            100% {
+                top: -100%;
+            }
+        }
+
+        /* Styling for the iframe within the div */
+        .container iframe {
             width: 100%;
             height: 100%;
+            position: relative;
+            z-index: 2; /* Place iframe above the border image */
+            border: 40px solid rgba(0, 0, 0, 0); /* Adds a semi-transparent red border */
+            box-sizing: border-box;
+        }
+
+        /* Styling for the bottom-left overlay image */
+        .overlay {
+            position: absolute;
+            bottom: 10px; /* Adjust distance from bottom */
+            left: 10px; /* Adjust distance from left */
+            width: 50px; /* Set desired width */
+            height: auto;
+            z-index: 3; /* Places overlay above both iframe and border image */
+        }
+
+        /* Styling for the link next to the overlay image */
+        .link-container {
+            position: absolute;
+            bottom: 10px;
+            left: 70px; /* Adjust the position to place it next to the overlay */
+            z-index: 4; /* Places link above iframe and border image */
+        }
+
+        .link-container a {
+            font-size: 20px; /* Adjust font size */
+            color: white; /* Text color */
+            text-decoration: none; /* Remove underline */
+            font-weight: bold; /* Make the text bold */
+        }
+
+        .link-container a:hover {
+            color: #26a523; /* Change text color on hover */
         }
     </style>
-    <!-- Twitter Card Metadata -->
-    <meta name="twitter:card" content="player">
-    <meta name="twitter:site" content="@just_stuff_tm">
-    <meta name="twitter:title" content="AJNLive Alex Jones Network">
-    <meta name="twitter:description" content="Description of your live stream event.">
-    <meta name="twitter:image" content="URL_TO_YOUR_THUMBNAIL_IMAGE">
-    <meta name="twitter:player" content="https://just-stuff-tm.github.io/alex-jones-restream/">
-    <meta name="twitter:player:width" content="640">
-    <meta name="twitter:player:height" content="360">
 </head>
 <body>
-    <div class="video-container">
-        <iframe src="https://rumble.com/embed/v4zrpc6/?pub=3y74l9" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    <div class="container">
+        <img src="background.jpg" class="border-image" alt="Border Image">
+        <iframe src="https://rumble.com/embed/v4zrpc6/?pub=3y74l9&autoplay=true&muted=1"></iframe>
+        <!-- Clickable overlay image -->
+        <a href="https://x.com/just_stuff_tm" target="_blank">
+            <img src="Xlogo.png" class="overlay" alt="Overlay Image">
+        </a>
+        <!-- Clickable link next to the overlay image -->
+        <div class="link-container">
+            <a href="https://x.com/just_stuff_tm" target="_blank">@just_stuff_tm</a>
+        </div>
     </div>
 </body>
 </html>

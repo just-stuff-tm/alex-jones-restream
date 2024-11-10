@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Live Stream</title>
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="player">
+    <meta name="twitter:site" content="@twitterhandle">
+    <meta name="twitter:description" content="A description of the page’s video or audio content">
+    <meta name="twitter:image" content="https://example.com/path/to/image.jpg">
+    <meta name="twitter:player" content="https://just-stuff-tm.github.io/alex-jones-restream/">
+    <meta name="twitter:player:width" content="480">
+    <meta name="twitter:player:height" content="270">
+
     <style>
         body { 
             margin: 0; 
@@ -17,25 +27,24 @@
             height: 100vh;
             background-color: lightgray;
             margin: 0 auto;
-            position: relative; /* Enables positioning for inner elements */
+            position: relative;
             box-sizing: border-box;
-            overflow: hidden; /* Hides overflow for scrolling effect */
+            overflow: hidden;
         }
 
         /* Styling for the background border image */
         .border-image {
             position: absolute;
             top: 0;
-            left: -10px; /* Adjust to fit around the iframe */
-            width: calc(100% + 20px); /* Makes border image slightly larger than iframe */
-            height: 200%; /* Makes the image taller for smooth scrolling */
-            z-index: 1; /* Place behind the iframe */
-            opacity: 0.9; /* Adjusts transparency of border image */
-            pointer-events: none; /* Ensure clicks go through to iframe */
-            animation: scroll-up 10s linear infinite; /* Animation for vertical scroll */
+            left: -10px;
+            width: calc(100% + 20px);
+            height: 200%;
+            z-index: 1;
+            opacity: 0.9;
+            pointer-events: none;
+            animation: scroll-up 10s linear infinite;
         }
 
-        /* Keyframes for scrolling up */
         @keyframes scroll-up {
             0% {
                 top: 0;
@@ -45,43 +54,43 @@
             }
         }
 
-        /* Styling for the iframe within the div */
+        /* Styling for the iframe */
         .container iframe {
             width: 100%;
             height: 100%;
             position: relative;
-            z-index: 2; /* Place iframe above the border image */
-            border: 40px solid rgba(0, 0, 0, 0); /* Adds a semi-transparent red border */
+            z-index: 2;
+            border: 40px solid rgba(0, 0, 0, 0);
             box-sizing: border-box;
         }
 
         /* Styling for the bottom-left overlay image */
         .overlay {
             position: absolute;
-            bottom: 10px; /* Adjust distance from bottom */
-            left: 10px; /* Adjust distance from left */
-            width: 50px; /* Set desired width */
+            bottom: 10px;
+            left: 10px;
+            width: 50px;
             height: auto;
-            z-index: 3; /* Places overlay above both iframe and border image */
+            z-index: 3;
         }
 
         /* Styling for the link next to the overlay image */
         .link-container {
             position: absolute;
             bottom: 10px;
-            left: 70px; /* Adjust the position to place it next to the overlay */
-            z-index: 4; /* Places link above iframe and border image */
+            left: 70px;
+            z-index: 4;
         }
 
         .link-container a {
-            font-size: 20px; /* Adjust font size */
-            color: white; /* Text color */
-            text-decoration: none; /* Remove underline */
-            font-weight: bold; /* Make the text bold */
+            font-size: 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
         }
 
         .link-container a:hover {
-            color: #26a523; /* Change text color on hover */
+            color: #26a523;
         }
     </style>
 </head>
